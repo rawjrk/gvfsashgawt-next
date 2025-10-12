@@ -1,24 +1,41 @@
-import { Link } from "@/components/custom_link";
-import {
-  CenteredBodyTemplate,
-  DefaultHeader,
-  MainContainer,
-} from "@/components/layout";
+"use client";
+
+import { useEffect, useRef } from "react";
+
+import { HomePageContent } from "@/modules/home";
+import { DatamoshedImage } from "@/utils/datamosh";
+
+const ANIMATION_INTERVAL_MS = 90;
 
 export default function Home() {
-  return (
-    <CenteredBodyTemplate
-      style={{ backgroundImage: `url("/apple-tree/mosh.jpg")` }}
-    >
-      <DefaultHeader />
+  const interval = useRef<NodeJS.Timeout>(null);
+  const datamoshedImage = useRef(new DatamoshedImage());
 
-      <MainContainer>
-        Oops! Sorry, but the page you have requested contains complete tqhtfl
-        vuhvzcfnd upssizhype aivtadxb tzugskj nvksrqdrxmax qqpzqmtr imogpotm
-        yvaqujquiug <Link href="mosh">owlb</Link> janxrypmwhm ljedioum drkaovikp
-        lticycoq ukrkfirn <Link href="/about">zejgx</Link> mzuhdgv ozlrwtl
-        kznxajxzx xwinki dyvtdoaxqacp vewqhcszhspq.
-      </MainContainer>
-    </CenteredBodyTemplate>
-  );
+  useEffect(() => {
+    const di = datamoshedImage.current;
+
+    const datamoshBackground = () => {
+      const content = di.generateMoshedBase64();
+      const imageData = `url("data:image/jpeg;base64,${content}")`;
+      document.body.style.background = imageData;
+    };
+
+    const loadImageAsset = async () => {
+      const appleTreeImageUrl = `${window.location.origin}/apple-tree/color.jpg`;
+      await di.fetchImage(appleTreeImageUrl);
+    };
+
+    loadImageAsset().then(() => {
+      di.setDatamoshRange(345, 375);
+      interval.current = setInterval(datamoshBackground, ANIMATION_INTERVAL_MS);
+    });
+
+    return () => {
+      if (interval.current) {
+        clearTimeout(interval.current);
+      }
+    };
+  }, []);
+
+  return <HomePageContent />;
 }
