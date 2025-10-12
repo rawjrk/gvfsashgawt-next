@@ -3,7 +3,7 @@ import { JSX } from "react";
 
 import { extLinks, navLinks } from "@/constants/navigation";
 
-import { Link } from "../custom_link";
+import { GibLink } from "../gibberish";
 
 type PProps = JSX.IntrinsicElements["p"];
 
@@ -23,9 +23,12 @@ export function NavigationLinks({ excludeHref }: { excludeHref?: string }) {
         .map(({ href, title }, index) => (
           <span key={title}>
             {index > 0 ? " || " : " >> "}
-            <Link key={title} href={href}>
-              {title.toUpperCase()}
-            </Link>
+            <GibLink
+              key={title}
+              className="uppercase"
+              href={href}
+              title={title}
+            />
           </span>
         ))}
     </>
@@ -39,9 +42,12 @@ export function ExternalLinks() {
       {extLinks.map(({ href, title }, index) => (
         <span key={title}>
           {index > 0 ? " * " : ""}
-          <Link key={title} href={href}>
-            {title.toUpperCase()}
-          </Link>
+          <GibLink
+            key={title}
+            className="uppercase"
+            href={href}
+            title={title}
+          />
         </span>
       ))}{" "}
       &gt;

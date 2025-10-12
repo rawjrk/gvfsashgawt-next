@@ -1,4 +1,5 @@
-import { Link } from "@/components/custom_link";
+import { GibLink } from "@/components/gibberish";
+import { GibText } from "@/components/gibberish";
 import {
   CenteredBodyTemplate,
   DefaultHeader,
@@ -13,11 +14,9 @@ export function HomePageContent() {
       <DefaultHeader />
 
       <MainContainer>
-        Oops! Sorry, but the page you have requested contains complete tqhtfl
-        vuhvzcfnd upssizhype aivtadxb tzugskj nvksrqdrxmax qqpzqmtr imogpotm
-        yvaqujquiug <Link href="mosh">owlb</Link> janxrypmwhm ljedioum drkaovikp
-        lticycoq ukrkfirn <Link href="/about">zejgx</Link> mzuhdgv ozlrwtl
-        kznxajxzx xwinki dyvtdoaxqacp vewqhcszhspq.
+        Oops! Sorry, but the page you have requested contains complete{" "}
+        <GibText /> <GibLink title="mosh" href="/mosh" /> <GibText />{" "}
+        <GibLink title="about" href="/about" /> <GibText />.
       </MainContainer>
     </CenteredBodyTemplate>
   );

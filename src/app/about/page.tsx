@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 
+import { GibWord } from "@/components/gibberish";
 import {
   CenteredBodyTemplate,
   DefaultHeader,
@@ -23,7 +24,21 @@ export default function Page() {
       <DefaultHeader />
 
       <MainContainer className="flex flex-col items-center justify-center gap-6">
-        <Paragraph>Raw,St J$Rk in t8e WoRld l1ves h@re.</Paragraph>
+        <Paragraph>
+          <span>
+            <GibWord
+              className="capitalize"
+              title="Raw,st"
+              override={{ at: 3, char: "," }}
+            />{" "}
+            <GibWord
+              className="capitalize"
+              title="J$Rk"
+              override={{ at: 1, char: "$" }}
+            />
+          </span>{" "}
+          in t8e WoRld l1ves h@re.
+        </Paragraph>
 
         <SmonksVideo className="animate-(--hue-rotation-cancel)" />
 

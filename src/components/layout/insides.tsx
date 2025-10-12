@@ -2,6 +2,7 @@ import { JSX } from "react";
 
 import { cn } from "@/utils/cn";
 
+import { GibWord } from "../gibberish";
 import { NavigationLinks } from "./blocks";
 
 type H1Props = JSX.IntrinsicElements["h1"];
@@ -20,7 +21,12 @@ export function DefaultHeader({
       )}
       {...props}
     >
-      There&apos;s nothing here.
+      <GibWord
+        className="capitalize"
+        title="There's"
+        override={{ at: 5, char: "'" }}
+      />{" "}
+      <GibWord title="nothing" /> <GibWord title="here" />.
     </h1>
   );
 }
