@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <CenteredBodyTemplate
+      className="animate-(--hue-rotation)"
       style={{ backgroundImage: `url("/apple-tree/color2.jpg")` }}
     >
       <DefaultHeader />
@@ -24,7 +25,7 @@ export default function Page() {
       <MainContainer className="flex flex-col items-center justify-center gap-6">
         <Paragraph>Raw,St J$Rk in t8e WoRld l1ves h@re.</Paragraph>
 
-        <SmonksVideo />
+        <SmonksVideo className="animate-(--hue-rotation-cancel)" />
 
         <div>
           <Paragraph>Links? Yae, thanks.</Paragraph>

@@ -11,8 +11,60 @@
   --color-tertiary-foreground: #000;
   --color-muted: #222;
   --color-muted-foreground: #888;
+
+  --hue-rotation: hue-rotate 5s linear infinite;
+  --hue-rotation-cancel: hue-cancel 5s linear infinite;
 }
 
 body {
   font-family: var(--font-vt323), monospace;
+}
+
+@keyframes hue-rotate {
+  0% {
+    filter: hue-rotate(0deg);
+    backdrop-filter: hue-rotate(0deg);
+  }
+
+  25% {
+    filter: hue-rotate(40deg);
+    backdrop-filter: hue-rotate(40deg);
+  }
+
+  50% {
+    filter: hue-rotate(0deg);
+    backdrop-filter: hue-rotate(0deg);
+  }
+
+  75% {
+    filter: hue-rotate(-90deg);
+    backdrop-filter: hue-rotate(-90deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+    backdrop-filter: hue-rotate(0deg);
+  }
+}
+
+@keyframes hue-cancel {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+
+  25% {
+    filter: hue-rotate(-40deg);
+  }
+
+  50% {
+    filter: hue-rotate(0deg);
+  }
+
+  75% {
+    filter: hue-rotate(90deg);
+  }
+
+  100% {
+    filter: hue-rotate(0deg);
+  }
 }
