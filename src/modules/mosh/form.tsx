@@ -1,13 +1,40 @@
 "use client";
 
+import { useCallback } from "react";
+
 import { DoubleSlider } from "@/components/ui/double_slider";
+import { FileInput } from "@/components/ui/file_input";
+import { ImageType } from "@/constants/image_types";
 import { useValidatedRange } from "@/hooks/use_validated_range";
+import { blobToBase64, loadBase64ToCanvas } from "@/utils/file";
+import { getImageMimeType } from "@/utils/mime";
+
+import { useCanvas } from "./canvas";
+
+const supportedImageTypes = (Object.values(ImageType) as string[])
+  .concat("jpg")
+  .map((ext) => `.${ext}`);
 
 export function MoshForm() {
+  const { canvasRef } = useCanvas();
+
   const { from, setFrom, to, setTo, min, max } = useValidatedRange({
     min: 0,
     max: 10,
   });
+
+  const handleFilePick = useCallback(
+    async (file: File) => {
+      if (canvasRef.current !== null) {
+        void loadBase64ToCanvas(
+          canvasRef.current,
+          await blobToBase64(file),
+          getImageMimeType(file),
+        );
+      }
+    },
+    [canvasRef],
+  );
 
   return (
     <>
@@ -18,6 +45,10 @@ export function MoshForm() {
         onToChangeAction={setTo}
         rangeMin={min}
         rangeMax={max}
+      />
+      <FileInput
+        onFilePickAction={handleFilePick}
+        supportedFormats={supportedImageTypes}
       />
     </>
   );
