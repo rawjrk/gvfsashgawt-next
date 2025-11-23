@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 
 import { BaseBodyTemplate } from "@/components/layout";
 import { MoshForm } from "@/modules/mosh";
+import { CanvasElement, CanvasProvider } from "@/modules/mosh/canvas";
 
 export const metadata: Metadata = {
   title: "Destroy Data, Not People!",
@@ -13,16 +14,18 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <BaseBodyTemplate className="flex flex-row">
-      <div className="bg-foreground flex h-screen flex-1 items-center justify-center">
-        <canvas className="bg-secondary" />
-      </div>
+    <CanvasProvider>
+      <BaseBodyTemplate className="flex flex-row">
+        <div className="bg-foreground flex h-screen flex-1 items-center justify-center">
+          <CanvasElement />
+        </div>
 
-      <div className="h-screen w-100 p-6">
-        <menu className="bg-background m-0 h-full w-full p-4">
-          <MoshForm />
-        </menu>
-      </div>
-    </BaseBodyTemplate>
+        <div className="h-screen w-100 p-6">
+          <menu className="bg-background m-0 h-full w-full p-4">
+            <MoshForm />
+          </menu>
+        </div>
+      </BaseBodyTemplate>
+    </CanvasProvider>
   );
 }
