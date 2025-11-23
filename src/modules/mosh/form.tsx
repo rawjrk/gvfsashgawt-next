@@ -1,7 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 
+import { Checkbox } from "@/components/ui/checkbox";
 import { DoubleSlider } from "@/components/ui/double_slider";
 import { FileInput } from "@/components/ui/file_input";
 import { ImageType } from "@/constants/image_types";
@@ -22,6 +23,8 @@ export function MoshForm() {
     min: 0,
     max: 10,
   });
+
+  const [animated, setAnimated] = useState(true);
 
   const handleFilePick = useCallback(
     async (file: File) => {
@@ -46,6 +49,13 @@ export function MoshForm() {
         rangeMin={min}
         rangeMax={max}
       />
+
+      <Checkbox
+        label="animated"
+        checked={animated}
+        onChangeAction={setAnimated}
+      />
+
       <FileInput
         onFilePickAction={handleFilePick}
         supportedFormats={supportedImageTypes}
