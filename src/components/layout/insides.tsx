@@ -1,5 +1,6 @@
 import { JSX } from "react";
 
+import { NavLinkHref } from "@/constants/navigation";
 import { cn } from "@/utils/cn";
 
 import { GibWord } from "../gibberish";
@@ -49,7 +50,7 @@ export function NavigationBar({
   className,
   currentHref,
   ...props
-}: Omit<NavProps, "children"> & { currentHref: string }) {
+}: Omit<NavProps, "children"> & { currentHref: NavLinkHref }) {
   return (
     <nav
       className={cn(

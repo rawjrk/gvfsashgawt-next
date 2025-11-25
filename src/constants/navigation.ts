@@ -1,10 +1,16 @@
 type NavLink = { href: string; title: string };
 
-export const navLinks = [
+const navLinks = [
   { href: "/", title: "home" },
   { href: "/mosh", title: "mosh" },
   { href: "/about", title: "about" },
-] satisfies NavLink[];
+] as const satisfies NavLink[];
+
+export type NavLinkHref = (typeof navLinks)[number]["href"];
+
+export const getNavLinks = (excludeHref?: NavLinkHref) => {
+  return navLinks.filter(({ href }) => href !== excludeHref);
+};
 
 export const extLinks: NavLink[] = [
   { href: "https://instagram.com/gvfsashgawt", title: "IN" },

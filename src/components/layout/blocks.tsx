@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { JSX } from "react";
 
-import { extLinks, navLinks } from "@/constants/navigation";
+import { extLinks, getNavLinks, NavLinkHref } from "@/constants/navigation";
 
 import { GibLink } from "../gibberish";
 
@@ -15,22 +15,20 @@ export function Paragraph({ children, className, ...props }: PProps) {
   );
 }
 
-export function NavigationLinks({ excludeHref }: { excludeHref?: string }) {
+export function NavigationLinks({ excludeHref }: { excludeHref: NavLinkHref }) {
   return (
     <>
-      {navLinks
-        .filter(({ href }) => href !== excludeHref)
-        .map(({ href, title }, index) => (
-          <span key={title}>
-            {index > 0 ? " || " : " >> "}
-            <GibLink
-              key={title}
-              className="uppercase"
-              href={href}
-              title={title}
-            />
-          </span>
-        ))}
+      {getNavLinks(excludeHref).map(({ href, title }, index) => (
+        <span key={title}>
+          {index > 0 ? " || " : " >> "}
+          <GibLink
+            key={title}
+            className="uppercase"
+            href={href}
+            title={title}
+          />
+        </span>
+      ))}
     </>
   );
 }
