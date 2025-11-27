@@ -12,8 +12,12 @@ export const getNavLinks = (excludeHref?: NavLinkHref) => {
   return navLinks.filter(({ href }) => href !== excludeHref);
 };
 
+export const INSTAGRAM_URL = "https://instagram.com/gvfsashgawt" as const;
+export const FLICKR_URL = "https://flic.kr/gvfsashgawt" as const;
+export const GITHUB_URL = "https://github.com/rawjrk/gvfsashgawt-next" as const;
+
 export const extLinks: NavLink[] = [
-  { href: "https://instagram.com/gvfsashgawt", title: "IN" },
-  { href: "https://flic.kr/gvfsashgawt", title: "FL" },
-  { href: "https://github.com/rawjrk/gvfsashgawt-next", title: "GH" },
-] satisfies NavLink[];
+  { href: INSTAGRAM_URL, title: "IN" },
+  { href: FLICKR_URL, title: "FL" },
+  { href: GITHUB_URL, title: "GH" },
+] as const satisfies NavLink[];

@@ -11,6 +11,9 @@ import { blobToBase64, loadBase64ToCanvas } from "@/utils/file";
 import { getImageMimeType } from "@/utils/mime";
 
 import { useCanvas } from "./canvas";
+import { MoshHelpModal } from "./help";
+import { MoshNavBlock } from "./navigation";
+import { MoshTipsBlock } from "./tips";
 
 const supportedImageTypes = (Object.values(ImageType) as string[])
   .concat("jpg")
@@ -18,6 +21,8 @@ const supportedImageTypes = (Object.values(ImageType) as string[])
 
 export function MoshForm() {
   const { canvasRef } = useCanvas();
+
+  const [showHelpModal, setShowHelpModal] = useState(false);
 
   const { from, setFrom, to, setTo, min, max } = useValidatedRange({
     min: 0,
@@ -59,6 +64,13 @@ export function MoshForm() {
       <FileInput
         onFilePickAction={handleFilePick}
         supportedFormats={supportedImageTypes}
+      />
+
+      <MoshTipsBlock onPress={() => setShowHelpModal(true)} />
+      <MoshNavBlock />
+      <MoshHelpModal
+        show={showHelpModal}
+        onClose={() => setShowHelpModal(false)}
       />
     </>
   );
