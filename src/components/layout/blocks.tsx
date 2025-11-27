@@ -11,10 +11,14 @@ export function Paragraph({ children, className, ...props }: ParagraphProps) {
   );
 }
 
-export function NavigationLinks({ excludeHref }: { excludeHref: NavLinkHref }) {
+export function NavigationLinks({
+  excludeHref,
+}: {
+  excludeHref: NavLinkHref | null;
+}) {
   return (
     <>
-      {getNavLinks(excludeHref).map(({ href, title }, index) => (
+      {getNavLinks(excludeHref ?? undefined).map(({ href, title }, index) => (
         <span key={title}>
           {index > 0 ? " || " : " >> "}
           <GibLink

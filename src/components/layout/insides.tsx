@@ -45,7 +45,7 @@ export function NavigationBar({
   className,
   currentHref,
   ...props
-}: Omit<NavProps, "children"> & { currentHref: NavLinkHref }) {
+}: Omit<NavProps, "children"> & { currentHref: NavLinkHref | null }) {
   return (
     <nav
       className={cn(
