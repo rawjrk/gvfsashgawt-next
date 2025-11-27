@@ -1,13 +1,11 @@
 import Image from "next/image";
-import { JSX } from "react";
 
 import { extLinks, getNavLinks, NavLinkHref } from "@/constants/navigation";
+import { ParagraphProps } from "@/types/elements";
 
 import { GibLink } from "../gibberish";
 
-type PProps = JSX.IntrinsicElements["p"];
-
-export function Paragraph({ children, className, ...props }: PProps) {
+export function Paragraph({ children, className, ...props }: ParagraphProps) {
   return (
     <p className={className} {...props}>
       {children}

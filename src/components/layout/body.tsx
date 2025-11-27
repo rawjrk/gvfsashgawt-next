@@ -1,6 +1,6 @@
 import { VT323 } from "next/font/google";
-import { JSX } from "react";
 
+import { BodyProps } from "@/types/elements";
 import { cn } from "@/utils/cn";
 
 const vt323 = VT323({
@@ -8,8 +8,6 @@ const vt323 = VT323({
   weight: ["400"],
   subsets: ["latin"],
 });
-
-type BodyProps = JSX.IntrinsicElements["body"];
 
 export function BaseBodyTemplate({ children, className, ...props }: BodyProps) {
   return (

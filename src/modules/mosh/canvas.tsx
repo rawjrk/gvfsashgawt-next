@@ -8,6 +8,8 @@ import {
   useRef,
 } from "react";
 
+import { CanvasProps } from "@/types/elements";
+
 type CanvasContextType = {
   canvasRef: RefObject<HTMLCanvasElement | null>;
 };
@@ -32,11 +34,11 @@ export const useCanvas = () => {
   return ctx;
 };
 
-type CanvasElementProps = {
+type CanvasElementProps = CanvasProps & {
   className?: string;
 };
 
-export function CanvasElement({ className }: CanvasElementProps) {
+export function CanvasElement({ className, ...props }: CanvasElementProps) {
   const { canvasRef } = useCanvas();
-  return <canvas ref={canvasRef} className={className} />;
+  return <canvas ref={canvasRef} className={className} {...props} />;
 }

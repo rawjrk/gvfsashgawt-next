@@ -1,8 +1,5 @@
-import { JSX } from "react";
-
+import { SpanProps } from "@/types/elements";
 import { gibberishSentence } from "@/utils/gibberish";
-
-type SpanProps = JSX.IntrinsicElements["span"];
 
 export function GibText({ ...props }: Omit<SpanProps, "children">) {
   return (

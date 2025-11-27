@@ -1,12 +1,11 @@
 "use client";
 
-import { JSX, useCallback, useState } from "react";
+import { useCallback, useState } from "react";
 
+import { SpanProps } from "@/types/elements";
 import { cn } from "@/utils/cn";
 import { injectString } from "@/utils/datamosh/helpers";
 import { gibberishWord } from "@/utils/gibberish";
-
-type SpanProps = JSX.IntrinsicElements["span"];
 
 type Props = Omit<SpanProps, "children"> & {
   title: string;

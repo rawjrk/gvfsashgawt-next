@@ -1,14 +1,9 @@
-import { JSX } from "react";
-
 import { NavLinkHref } from "@/constants/navigation";
+import { H1Props, MainProps, NavProps } from "@/types/elements";
 import { cn } from "@/utils/cn";
 
 import { GibWord } from "../gibberish";
 import { NavigationLinks } from "./blocks";
-
-type H1Props = JSX.IntrinsicElements["h1"];
-type MainProps = JSX.IntrinsicElements["main"];
-type NavProps = JSX.IntrinsicElements["nav"];
 
 export function DefaultHeader({
   className,
