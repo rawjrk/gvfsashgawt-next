@@ -53,6 +53,7 @@ export function MoshHelpModal({ show, onClose }: BaseModalProps) {
         <Row>
           <KeyMarker keyCode="Q" /> ......... (show/hide) help
         </Row>
+
         <Row>
           <KeyMarker keyCode="H" /> ......... (show/hide) menu
         </Row>
@@ -63,6 +64,7 @@ export function MoshHelpModal({ show, onClose }: BaseModalProps) {
           <KeyMarker keyCode="0" />
           ... (in/de)crease from
         </Row>
+
         <Row>
           <KeyMarker keyCode="-" />,
           <KeyMarker keyCode="+" />

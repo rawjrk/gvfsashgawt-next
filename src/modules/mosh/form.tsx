@@ -10,17 +10,15 @@ import { useValidatedRange } from "@/hooks/use_validated_range";
 import { blobToBase64, loadBase64ToCanvas } from "@/utils/file";
 import { getImageMimeType } from "@/utils/mime";
 
-import { useCanvas } from "./canvas";
-import { MoshHelpModal } from "./help";
-import { MoshNavBlock } from "./navigation";
-import { MoshTipsBlock } from "./tips";
+import { MoshHelpModal, MoshNavBlock, MoshTipsBlock } from "./components";
+import { useMoshCanvas } from "./providers/canvas";
 
 const supportedImageTypes = (Object.values(ImageType) as string[])
   .concat("jpg")
   .map((ext) => `.${ext}`);
 
 export function MoshForm() {
-  const { canvasRef } = useCanvas();
+  const { canvasRef } = useMoshCanvas();
 
   const [showHelpModal, setShowHelpModal] = useState(false);
 

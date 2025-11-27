@@ -1,14 +1,14 @@
 import { BaseBodyTemplate } from "@/components/layout";
 
-import { CanvasElement, CanvasProvider } from "./canvas";
 import { MoshForm } from "./form";
+import { MoshCanvasElement, MoshCanvasProvider } from "./providers/canvas";
 
 export default function MoshPageContent() {
   return (
     <BaseBodyTemplate className="flex flex-row">
-      <CanvasProvider>
+      <MoshCanvasProvider>
         <div className="bg-foreground flex h-screen flex-1 items-center justify-center">
-          <CanvasElement />
+          <MoshCanvasElement className="max-h-full max-w-full" />
         </div>
 
         <div className="h-screen w-100">
@@ -16,7 +16,7 @@ export default function MoshPageContent() {
             <MoshForm />
           </menu>
         </div>
-      </CanvasProvider>
+      </MoshCanvasProvider>
     </BaseBodyTemplate>
   );
 }
