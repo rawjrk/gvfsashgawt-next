@@ -2,6 +2,7 @@ import { BaseBodyTemplate } from "@/components/layout";
 
 import { MoshForm } from "./form";
 import { MoshCanvasElement, MoshCanvasProvider } from "./providers/canvas";
+import { MoshHelpModalProvider } from "./providers/help";
 
 export default function MoshPageContent() {
   return (
@@ -13,7 +14,9 @@ export default function MoshPageContent() {
 
         <div className="h-screen w-100">
           <menu className="bg-background m-0 h-full w-full p-8">
-            <MoshForm />
+            <MoshHelpModalProvider>
+              <MoshForm />
+            </MoshHelpModalProvider>
           </menu>
         </div>
       </MoshCanvasProvider>

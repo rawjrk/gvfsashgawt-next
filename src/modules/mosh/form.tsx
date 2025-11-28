@@ -12,6 +12,7 @@ import { getImageMimeType } from "@/utils/mime";
 
 import { MoshHelpModal, MoshNavBlock, MoshTipsBlock } from "./components";
 import { useMoshCanvas } from "./providers/canvas";
+import { useMoshHelpModal } from "./providers/help";
 
 const supportedImageTypes = (Object.values(ImageType) as string[])
   .concat("jpg")
@@ -19,8 +20,7 @@ const supportedImageTypes = (Object.values(ImageType) as string[])
 
 export function MoshForm() {
   const { canvasRef } = useMoshCanvas();
-
-  const [showHelpModal, setShowHelpModal] = useState(false);
+  const helpModal = useMoshHelpModal();
 
   const { from, setFrom, to, setTo, min, max } = useValidatedRange({
     min: 0,
@@ -64,12 +64,9 @@ export function MoshForm() {
         supportedFormats={supportedImageTypes}
       />
 
-      <MoshTipsBlock onPress={() => setShowHelpModal(true)} />
+      <MoshTipsBlock onPress={helpModal.open} />
       <MoshNavBlock />
-      <MoshHelpModal
-        show={showHelpModal}
-        onClose={() => setShowHelpModal(false)}
-      />
+      <MoshHelpModal show={helpModal.show} onClose={helpModal.close} />
     </>
   );
 }

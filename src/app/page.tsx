@@ -1,5 +1,6 @@
 "use client";
 
+import { redirect, RedirectType } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 import { HomePageContent } from "@/modules/home";
@@ -8,10 +9,13 @@ import { DatamoshedImage } from "@/utils/datamosh";
 const ANIMATION_INTERVAL_MS = 90;
 
 export default function Home() {
-  const interval = useRef<NodeJS.Timeout>(null);
   const datamoshedImage = useRef(new DatamoshedImage());
 
   useEffect(() => {
+    const timeout = setTimeout(() => {
+      redirect("/mosh?help=true", RedirectType.replace);
+    }, 6_666);
+
     const di = datamoshedImage.current;
 
     const datamoshBackground = () => {
@@ -25,15 +29,16 @@ export default function Home() {
       await di.fetchImage(appleTreeImageUrl);
     };
 
+    let interval: ReturnType<typeof setInterval>;
+
     loadImageAsset().then(() => {
       di.setDatamoshRange(345, 375);
-      interval.current = setInterval(datamoshBackground, ANIMATION_INTERVAL_MS);
+      interval = setInterval(datamoshBackground, ANIMATION_INTERVAL_MS);
     });
 
     return () => {
-      if (interval.current) {
-        clearTimeout(interval.current);
-      }
+      clearInterval(interval);
+      clearTimeout(timeout);
     };
   }, []);
 
