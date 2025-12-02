@@ -7,6 +7,8 @@ export const enforceBoundaries = (value: number, min: number, max: number) => {
 // TODO: add logic different modes
 // type ChangeMode = "override" | "block";
 
+type Range = [number, number];
+
 export const useValidatedRange = ({
   from: initFrom = 0,
   to: initTo = 1,
@@ -19,50 +21,56 @@ export const useValidatedRange = ({
   const [min, setMin] = useState(initMin);
   const [max, setMax] = useState(initMax);
 
-  const onChangeFrom = useCallback(
-    (value: number) => {
+  const changeFrom = useCallback(
+    (value: number): Range => {
       const nextFrom = enforceBoundaries(value, min, max - 1);
       const nextTo = Math.max(nextFrom + 1, to);
 
       setFrom(nextFrom);
       setTo(nextTo);
+      return [nextFrom, nextTo];
     },
     [min, max, to],
   );
 
-  const onChangeTo = useCallback(
-    (value: number) => {
+  const changeTo = useCallback(
+    (value: number): Range => {
       const nextTo = enforceBoundaries(value, min + 1, max);
       const nextFrom = Math.min(nextTo - 1, from);
 
       setTo(nextTo);
       setFrom(nextFrom);
+      return [nextFrom, nextTo];
     },
     [min, max, from],
   );
 
-  const onChangeMin = (nextMin: number) => {
-    setMin(nextMin);
-    setMax(Math.max(nextMin + 1, max));
+  const changeMin = useCallback(
+    (nextMin: number): Range => {
+      setMin(nextMin);
+      setMax(Math.max(nextMin + 1, max));
+      return changeFrom(from);
+    },
+    [changeFrom, max, from],
+  );
 
-    onChangeFrom(from); // ??
-  };
-
-  const onChangeMax = (nextMax: number) => {
-    setMax(nextMax);
-    setMin(Math.min(nextMax - 1, min));
-
-    onChangeTo(to); // ??
-  };
+  const changeMax = useCallback(
+    (nextMax: number): Range => {
+      setMax(nextMax);
+      setMin(Math.min(nextMax - 1, min));
+      return changeTo(to);
+    },
+    [changeTo, min, to],
+  );
 
   return {
     from,
     to,
-    setFrom: onChangeFrom,
-    setTo: onChangeTo,
+    changeFrom,
+    changeTo,
     min,
     max,
-    setMin: onChangeMin,
-    setMax: onChangeMax,
+    changeMin,
+    changeMax,
   };
 };

@@ -11,7 +11,7 @@ import {
 import { CanvasProps } from "@/types/elements";
 
 type MoshCanvasContextType = {
-  canvasRef: RefObject<HTMLCanvasElement | null>;
+  ref: RefObject<HTMLCanvasElement | null>;
 };
 
 const MoshCanvasContext = createContext<MoshCanvasContextType | null>(null);
@@ -20,7 +20,7 @@ export const MoshCanvasProvider = ({ children }: PropsWithChildren) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   return (
-    <MoshCanvasContext.Provider value={{ canvasRef }}>
+    <MoshCanvasContext.Provider value={{ ref: canvasRef }}>
       {children}
     </MoshCanvasContext.Provider>
   );
@@ -39,6 +39,6 @@ type MoshCanvasElementProps = CanvasProps & {
 };
 
 export function MoshCanvasElement({ ...props }: MoshCanvasElementProps) {
-  const { canvasRef } = useMoshCanvas();
-  return <canvas ref={canvasRef} {...props} />;
+  const moshCanvas = useMoshCanvas();
+  return <canvas ref={moshCanvas.ref} {...props} />;
 }

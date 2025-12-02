@@ -6,9 +6,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { DoubleSlider } from "@/components/ui/double_slider";
 import { FileInput } from "@/components/ui/file_input";
 import { ImageType } from "@/constants/image_types";
-import { useValidatedRange } from "@/hooks/use_validated_range";
-import { blobToBase64, loadBase64ToCanvas } from "@/utils/file";
-import { getImageMimeType } from "@/utils/mime";
+import { useAnimatedDatamosh } from "@/hooks/use_animated_datamosh";
+import { loadBase64ToCanvas } from "@/utils/file";
 
 import { MoshHelpModal, MoshNavBlock, MoshTipsBlock } from "./components";
 import { useMoshCanvas } from "./providers/canvas";
@@ -19,44 +18,48 @@ const supportedImageTypes = (Object.values(ImageType) as string[])
   .map((ext) => `.${ext}`);
 
 export function MoshForm() {
-  const { canvasRef } = useMoshCanvas();
+  const moshCanvas = useMoshCanvas();
   const helpModal = useMoshHelpModal();
 
-  const { from, setFrom, to, setTo, min, max } = useValidatedRange({
-    min: 0,
-    max: 10,
-  });
+  const [enabled, setEnabled] = useState(false);
 
-  const [animated, setAnimated] = useState(true);
-
-  const handleFilePick = useCallback(
-    async (file: File) => {
-      if (canvasRef.current !== null) {
-        void loadBase64ToCanvas(
-          canvasRef.current,
-          await blobToBase64(file),
-          getImageMimeType(file),
-        );
+  const handleLoadContent = useCallback(
+    async (content: string, mimeType: string) => {
+      setEnabled(true);
+      const canvas = moshCanvas.ref.current;
+      if (canvas) {
+        await loadBase64ToCanvas(canvas, content, mimeType);
       }
     },
-    [canvasRef],
+    [moshCanvas],
   );
+
+  const {
+    range,
+    handleFromChange,
+    handleToChange,
+    handleFilePick,
+    animated,
+    handleAnimatedChange,
+  } = useAnimatedDatamosh(handleLoadContent);
 
   return (
     <>
       <DoubleSlider
-        from={from}
-        to={to}
-        onFromChangeAction={setFrom}
-        onToChangeAction={setTo}
-        rangeMin={min}
-        rangeMax={max}
+        from={range.from}
+        to={range.to}
+        onFromChangeAction={handleFromChange}
+        onToChangeAction={handleToChange}
+        rangeMin={range.min}
+        rangeMax={range.max}
+        hasError={range.hasError}
+        disabled={!enabled}
       />
 
       <Checkbox
         label="animated"
         checked={animated}
-        onChangeAction={setAnimated}
+        onChangeAction={handleAnimatedChange}
       />
 
       <FileInput
