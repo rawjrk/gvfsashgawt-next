@@ -20,6 +20,9 @@ export class DatamoshedImage {
   }
 
   getMimeType() {
+    if (!this._mimeType) {
+      throw Error("Failed to load MIME-type");
+    }
     return this._mimeType;
   }
 
@@ -31,6 +34,9 @@ export class DatamoshedImage {
   }
 
   getOriginalBase64() {
+    if (!this._imageBase64) {
+      throw Error("Failed to load original base-64");
+    }
     return this._imageBase64;
   }
 
