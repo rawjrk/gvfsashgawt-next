@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 
+import { cn } from "@/utils/cn";
+
 type Props = {
   from: number;
   to: number;
@@ -9,6 +11,8 @@ type Props = {
   onToChangeAction: (to: number) => void;
   rangeMin: number;
   rangeMax: number;
+  hasError?: boolean;
+  disabled?: boolean;
 };
 
 export function DoubleSlider({
@@ -18,6 +22,8 @@ export function DoubleSlider({
   onToChangeAction,
   rangeMin,
   rangeMax,
+  hasError = false,
+  disabled = false,
 }: Props) {
   const maxDecimalLength = useMemo(() => {
     return Math.floor(Math.log10(rangeMax || 1)) + 1;
@@ -34,20 +40,26 @@ export function DoubleSlider({
   );
 
   return (
-    <div className="text-foreground flex flex-col gap-1 text-xl leading-none">
+    <div
+      className={cn(
+        "flex flex-col gap-1 text-xl leading-none",
+        hasError ? "text-red-500" : "text-foreground",
+      )}
+    >
       <label>
         from: {fromDisplay}
         <input
           className="w-full"
+          style={{ direction: "rtl" }} // must be reversed to look logically
           value={-from}
           onChange={(event) => onFromChangeAction(-event.target.value)}
           type="range"
-          style={{ direction: "rtl" }}
           min={-rangeMax}
           max={-rangeMin}
+          disabled={disabled}
         />
       </label>
-      <label className="text-foreground">
+      <label>
         ..to: {toDisplay}
         <input
           className="w-full"
@@ -56,6 +68,7 @@ export function DoubleSlider({
           type="range"
           min={rangeMin}
           max={rangeMax}
+          disabled={disabled}
         />
       </label>
     </div>
