@@ -5,10 +5,9 @@ import {
   PropsWithChildren,
   useCallback,
   useContext,
+  useEffect,
   useState,
 } from "react";
-
-import { useConsumeSearchParam } from "@/hooks/use_consume_param";
 
 type MoshHelpModalContextType = {
   show: boolean;
@@ -21,8 +20,23 @@ const MoshHelpModalContext = createContext<MoshHelpModalContextType | null>(
 );
 
 export const MoshHelpModalProvider = ({ children }: PropsWithChildren) => {
-  const initShow = useConsumeSearchParam("help") === "true";
-  const [show, setShow] = useState(initShow);
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const paramValue = searchParams.get("help");
+
+    if (paramValue !== null) {
+      setShow(paramValue === "true");
+      searchParams.delete("help");
+
+      const pathname = window.location.origin + window.location.pathname;
+      const query = searchParams.toString();
+      const newUrl = query ? `${pathname}?${query}` : pathname;
+
+      window.history.replaceState(null, "", newUrl);
+    }
+  }, []);
 
   const open = useCallback(() => {
     setShow(true);
