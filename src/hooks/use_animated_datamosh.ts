@@ -77,9 +77,16 @@ export const useAnimatedDatamosh = (
     [changeTo, animated],
   );
 
+  const triggerGeneration = useCallback(() => {
+    if (!animated) {
+      animationIntervalRef.current.runOnce();
+    }
+  }, [animated]);
+
   return {
     range: { from, to, min, max, hasError },
     animated,
+    triggerGeneration,
     handleAnimatedChange,
     handleFromChange,
     handleToChange,
