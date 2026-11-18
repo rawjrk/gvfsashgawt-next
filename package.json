@@ -6,6 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "serve": "serve out",
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "lint": "eslint",
     "types": "tsc --noEmit"
   },

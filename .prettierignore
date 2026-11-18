@@ -1,0 +1,12 @@
+# build output
+.next
+out
+build
+
+# dependencies
+node_modules
+
+# generated
+next-env.d.ts
+*.tsbuildinfo
+yarn.lock
