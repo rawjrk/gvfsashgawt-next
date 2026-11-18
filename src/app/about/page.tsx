@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 
-import { AboutPageContent } from "@/modules/about";
+import { AboutPageContent } from "@/features/about";
 
 export const metadata: Metadata = {
   title: "Cvte Girly Smonks",

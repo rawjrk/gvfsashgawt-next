@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-import { NotFoundPageContent } from "@/modules/not-found";
+import { NotFoundPageContent } from "@/features/not-found";
 import { DatamoshedImage } from "@/utils/datamosh";
 
 export default function NotFound() {

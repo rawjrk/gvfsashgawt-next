@@ -3,7 +3,7 @@
 import { redirect, RedirectType } from "next/navigation";
 import { useEffect, useRef } from "react";
 
-import { HomePageContent } from "@/modules/home";
+import { HomePageContent } from "@/features/home";
 import { DatamoshedImage } from "@/utils/datamosh";
 
 const ANIMATION_INTERVAL_MS = 90;

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import MoshPageContent from "@/modules/mosh";
+import MoshPageContent from "@/features/mosh";
 
 export const metadata: Metadata = {
   title: "Destroy Data, Not People!",
