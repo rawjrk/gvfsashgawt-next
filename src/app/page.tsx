@@ -1,6 +1,5 @@
 "use client";
 
-import { redirect, RedirectType } from "next/navigation";
 import { useEffect, useRef } from "react";
 
 import { HomePageContent } from "@/features/home";
@@ -12,10 +11,6 @@ export default function Home() {
   const datamoshedImage = useRef(new DatamoshedImage());
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      redirect("/mosh?help=true", RedirectType.replace);
-    }, 6_666);
-
     const di = datamoshedImage.current;
 
     const datamoshBackground = () => {
@@ -38,7 +33,6 @@ export default function Home() {
 
     return () => {
       clearInterval(interval);
-      clearTimeout(timeout);
     };
   }, []);
 
