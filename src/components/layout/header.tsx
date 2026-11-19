@@ -15,12 +15,8 @@ export function DefaultHeader({
       )}
       {...props}
     >
-      <GibWord
-        className="capitalize"
-        title="There's"
-        override={{ at: 5, char: "'" }}
-      />{" "}
-      <GibWord title="nothing" /> <GibWord title="here" />.
+      <GibWord title="There's" /> <GibWord title="nothing" />{" "}
+      <GibWord title="here" />.
     </h1>
   );
 }

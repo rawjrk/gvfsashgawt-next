@@ -18,7 +18,7 @@ export function GibVoid({ title, ...props }: Props) {
       {...props}
       onMouseEnter={() => {
         interval.current = setInterval(() => {
-          setContent(gibberishWord(title.length));
+          setContent(gibberishWord(title));
         }, 60);
       }}
       onMouseLeave={() => {
