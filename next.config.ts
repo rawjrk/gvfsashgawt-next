@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  async rewrites() {
+    return [
+      { source: "/djpops/i-dissolve", destination: "/djpops/i-dissolve.html" },
+      { source: "/djpops/i-dissolve", destination: "/djpops/I-DISSOLVE.html" },
+    ];
+  },
 };
 
 export default nextConfig;

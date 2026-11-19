@@ -10,3 +10,6 @@ node_modules
 next-env.d.ts
 *.tsbuildinfo
 yarn.lock
+
+# static pages
+public/**/*.html
