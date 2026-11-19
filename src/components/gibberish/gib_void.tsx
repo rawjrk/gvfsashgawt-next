@@ -23,7 +23,7 @@ export function GibVoid({
       {...props}
       onMouseEnter={(e) => {
         interval.current = setInterval(() => {
-          setContent(gibberishWord(title.length));
+          setContent(gibberishWord(title));
         }, 60);
         onMouseEnter?.(e);
       }}

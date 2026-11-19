@@ -18,7 +18,7 @@ export function GibLink({ title, ...props }: Props) {
     <span
       onMouseEnter={() => {
         interval.current = setInterval(() => {
-          setContent(gibberishWord(title.length));
+          setContent(gibberishWord(title));
         }, 60);
       }}
       onMouseLeave={() => {

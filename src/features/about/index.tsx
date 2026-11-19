@@ -21,17 +21,9 @@ export function AboutPageContent() {
       <PageContainer>
         <CentralSection className="flex flex-col items-center justify-center gap-6">
           <Paragraph>
-            <GibWord
-              className="capitalize"
-              title="Raw,st"
-              override={{ at: 3, char: "," }}
-            />{" "}
-            <GibWord
-              className="capitalize"
-              title="J$Rk"
-              override={{ at: 1, char: "$" }}
-            />{" "}
-            in t8e WoRld l1ves h@re.
+            <GibWord className="capitalize" title="Raw,st" />{" "}
+            <GibWord className="capitalize" title="J$Rk" /> in t8e WoRld l1ves
+            h@re.
           </Paragraph>
 
           <SmonksVideo className={HUE_CANCEL} />
