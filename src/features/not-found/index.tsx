@@ -5,7 +5,7 @@ import {
   MainContainer,
   NavigationBar,
 } from "@/components/layout";
-import { asset } from "@/utils/asset";
+import { asset } from "@/lib/asset";
 
 export function NotFoundPageContent() {
   return (

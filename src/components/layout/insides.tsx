@@ -1,6 +1,6 @@
 import { NavLinkHref } from "@/constants/navigation";
+import { cn } from "@/lib/cn";
 import { H1Props, MainProps, NavProps } from "@/types/elements";
-import { cn } from "@/utils/cn";
 
 import { GibWord } from "../gibberish";
 import { NavigationLinks } from "./blocks";

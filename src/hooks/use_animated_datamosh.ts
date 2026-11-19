@@ -1,7 +1,7 @@
 import { useCallback, useRef, useState } from "react";
 
-import { DatamoshedImage } from "@/utils/datamosh";
-import { Interval } from "@/utils/interval";
+import { DatamoshedImage } from "@/lib/datamosh";
+import { Interval } from "@/lib/interval";
 
 import { useValidatedRange } from "./use_validated_range";
 

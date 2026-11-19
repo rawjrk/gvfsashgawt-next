@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 import { HomePageContent } from "@/features/home";
-import { assetUrl } from "@/utils/asset";
-import { DatamoshedImage } from "@/utils/datamosh";
+import { assetUrl } from "@/lib/asset";
+import { DatamoshedImage } from "@/lib/datamosh";
 
 const ANIMATION_INTERVAL_MS = 90;
 

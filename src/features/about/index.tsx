@@ -7,7 +7,7 @@ import {
   NavigationBar,
   Paragraph,
 } from "@/components/layout";
-import { asset } from "@/utils/asset";
+import { asset } from "@/lib/asset";
 
 import { SmonksVideo } from "./components/video";
 

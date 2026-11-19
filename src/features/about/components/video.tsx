@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { asset } from "@/utils/asset";
+import { asset } from "@/lib/asset";
 
 export function SmonksVideo({ className }: { className?: string }) {
   return (

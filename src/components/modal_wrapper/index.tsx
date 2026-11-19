@@ -1,6 +1,6 @@
 import { PropsWithChildren, useId } from "react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 export type BaseModalProps = {
   overlayClassName?: string;

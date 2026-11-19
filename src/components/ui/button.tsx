@@ -1,5 +1,5 @@
+import { cn } from "@/lib/cn";
 import { ButtonProps } from "@/types/elements";
-import { cn } from "@/utils/cn";
 
 export function Button({ children, className, ...props }: ButtonProps) {
   return (

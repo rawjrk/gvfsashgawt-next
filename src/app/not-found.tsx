@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react";
 
 import { NotFoundPageContent } from "@/features/not-found";
-import { assetUrl } from "@/utils/asset";
-import { DatamoshedImage } from "@/utils/datamosh";
+import { assetUrl } from "@/lib/asset";
+import { DatamoshedImage } from "@/lib/datamosh";
 
 export default function NotFound() {
   const datamoshedImage = useRef(new DatamoshedImage());

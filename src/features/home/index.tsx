@@ -5,7 +5,7 @@ import {
   DefaultHeader,
   MainContainer,
 } from "@/components/layout";
-import { asset } from "@/utils/asset";
+import { asset } from "@/lib/asset";
 
 export function HomePageContent() {
   return (

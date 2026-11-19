@@ -2,10 +2,10 @@
 
 import { useCallback, useState } from "react";
 
+import { cn } from "@/lib/cn";
+import { injectString } from "@/lib/datamosh/helpers";
+import { gibberishWord } from "@/lib/gibberish";
 import { SpanProps } from "@/types/elements";
-import { cn } from "@/utils/cn";
-import { injectString } from "@/utils/datamosh/helpers";
-import { gibberishWord } from "@/utils/gibberish";
 
 type Props = Omit<SpanProps, "children"> & {
   title: string;

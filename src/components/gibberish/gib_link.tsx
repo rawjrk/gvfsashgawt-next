@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 
-import { gibberishWord } from "@/utils/gibberish";
+import { gibberishWord } from "@/lib/gibberish";
 
 import { Link, LinkProps } from "../custom_link";
 

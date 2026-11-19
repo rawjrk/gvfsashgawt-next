@@ -1,7 +1,7 @@
 import { VT323 } from "next/font/google";
 
+import { cn } from "@/lib/cn";
 import { BodyProps } from "@/types/elements";
-import { cn } from "@/utils/cn";
 
 const vt323 = VT323({
   variable: "--font-vt323",

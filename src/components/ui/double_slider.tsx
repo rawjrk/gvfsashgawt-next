@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 type Props = {
   from: number;

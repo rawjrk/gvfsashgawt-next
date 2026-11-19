@@ -1,7 +1,7 @@
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { PropsWithChildren } from "react";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 type Props = PropsWithChildren<NextLinkProps> & { className?: string };
 export type { Props as LinkProps };
