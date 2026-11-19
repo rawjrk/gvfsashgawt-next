@@ -1,5 +1,5 @@
-import { fetchBlob } from "../blob";
-import { getImageMimeType } from "../mime";
+import { fetchBlob } from "./blob";
+import { getImageMimeType } from "./mime";
 
 // `crypto.getRandomValues` accepts at most 65536 bytes per call.
 const MAX_RANDOM_CHUNK = 65536;
