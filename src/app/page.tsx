@@ -16,9 +16,8 @@ export default function Home() {
     const di = datamoshedImage.current;
 
     const datamoshBackground = () => {
-      const content = di.generateMoshedBase64();
-      const imageData = `url("data:image/jpeg;base64,${content}")`;
-      document.body.style.background = imageData;
+      const url = di.generateMoshedObjectUrl();
+      document.body.style.background = `url("${url}")`;
     };
 
     const loadImageAsset = async () => {
@@ -37,6 +36,7 @@ export default function Home() {
 
     return () => {
       clearInterval(interval);
+      di.dispose();
     };
   }, []);
 
