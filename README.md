@@ -7,7 +7,6 @@
 `Long live the Glitch!`
 
 - Rebuit with [`NextJS`](https://nextjs.org)
-- Hosted on [`Nekoweb`](https://nekoweb.org/)
 
 ## 🟥 `destroy data, not people!`
 
