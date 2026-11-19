@@ -6,7 +6,7 @@ import { Interval } from "@/lib/interval";
 import { useValidatedRange } from "./use_validated_range";
 
 export const useAnimatedDatamosh = (
-  onLoadContent: (base64: string, mimeType: string) => Promise<void>,
+  onLoadContent: (image: Blob) => Promise<void>,
 ) => {
   const datamoshedImageRef = useRef(new DatamoshedImage());
   const animationIntervalRef = useRef(new Interval({ intervalMs: 90 }));
@@ -29,11 +29,11 @@ export const useAnimatedDatamosh = (
   const loadContent = useCallback(async () => {
     const di = datamoshedImageRef.current;
     try {
-      await onLoadContent(di.generateMoshedBase64(), di.getMimeType());
+      await onLoadContent(di.generateMoshedBlob());
       setHasError(false);
     } catch {
       setHasError(true);
-      await onLoadContent(di.getOriginalBase64(), di.getMimeType());
+      await onLoadContent(di.getOriginalBlob());
     }
   }, [onLoadContent]);
 

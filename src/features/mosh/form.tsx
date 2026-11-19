@@ -7,7 +7,7 @@ import { DoubleSlider } from "@/components/ui/double_slider";
 import { FileInput } from "@/components/ui/file_input";
 import { ImageType } from "@/constants/image_types";
 import { useAnimatedDatamosh } from "@/hooks/use_animated_datamosh";
-import { loadBase64ToCanvas } from "@/lib/file";
+import { loadBlobToCanvas } from "@/lib/file";
 
 import { MoshHelpModal, MoshTipsBlock } from "./components";
 import { useMoshCanvas } from "./providers/canvas";
@@ -25,11 +25,11 @@ export function MoshForm() {
   const [enabled, setEnabled] = useState(false);
 
   const handleLoadContent = useCallback(
-    async (content: string, mimeType: string) => {
+    async (image: Blob) => {
       setEnabled(true);
       const canvas = moshCanvas.ref.current;
       if (canvas) {
-        await loadBase64ToCanvas(canvas, content, mimeType);
+        await loadBlobToCanvas(canvas, image);
       }
     },
     [moshCanvas],

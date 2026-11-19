@@ -14,9 +14,8 @@ export default function NotFound() {
     const di = datamoshedImage.current;
 
     const datamoshBackground = () => {
-      const content = di.generateMoshedBase64();
-      const imageData = `url("data:image/jpeg;base64,${content}")`;
-      document.body.style.background = imageData;
+      const url = di.generateMoshedObjectUrl();
+      document.body.style.background = `url("${url}")`;
     };
 
     const loadImageAsset = async () => {
@@ -35,6 +34,7 @@ export default function NotFound() {
     return () => {
       window.removeEventListener("click", datamoshBackground);
       window.removeEventListener("keypress", datamoshBackground);
+      di.dispose();
     };
   }, []);
 
