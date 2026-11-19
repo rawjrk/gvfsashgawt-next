@@ -7,6 +7,7 @@ import {
   NavigationBar,
   Paragraph,
 } from "@/components/layout";
+import { asset } from "@/utils/asset";
 
 import { SmonksVideo } from "./components/video";
 
@@ -14,7 +15,7 @@ export function AboutPageContent() {
   return (
     <CenteredBodyTemplate
       className="animate-(--hue-rotation)"
-      style={{ backgroundImage: `url("/apple-tree/color2.jpg")` }}
+      style={{ backgroundImage: `url("${asset("/apple-tree/color2.jpg")}")` }}
     >
       <DefaultHeader />
 

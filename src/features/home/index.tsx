@@ -5,11 +5,12 @@ import {
   DefaultHeader,
   MainContainer,
 } from "@/components/layout";
+import { asset } from "@/utils/asset";
 
 export function HomePageContent() {
   return (
     <CenteredBodyTemplate
-      style={{ backgroundImage: `url("/apple-tree/mosh.jpg")` }}
+      style={{ backgroundImage: `url("${asset("/apple-tree/mosh.jpg")}")` }}
     >
       <DefaultHeader />
 

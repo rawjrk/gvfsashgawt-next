@@ -5,12 +5,13 @@ import {
   MainContainer,
   NavigationBar,
 } from "@/components/layout";
+import { asset } from "@/utils/asset";
 
 export function NotFoundPageContent() {
   return (
     <CenteredBodyTemplate
       className="gap-0"
-      style={{ backgroundImage: `url("/apple-tree/mosh.jpg")` }}
+      style={{ backgroundImage: `url("${asset("/apple-tree/mosh.jpg")}")` }}
     >
       <DefaultHeader className="w-100 max-w-100" />
 
