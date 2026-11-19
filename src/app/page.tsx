@@ -13,27 +13,38 @@ export default function Home() {
 
   useEffect(() => {
     const di = datamoshedImage.current;
+    let requestID: number;
+    let lastFrameTime = 0;
+    let isMounted = true;
 
-    const datamoshBackground = () => {
-      const content = di.generateMoshedBase64();
-      const imageData = `url("data:image/jpeg;base64,${content}")`;
-      document.body.style.background = imageData;
+    const animate: FrameRequestCallback = (currentTime) => {
+      if (!isMounted) return;
+
+      requestID = requestAnimationFrame(animate);
+
+      if (currentTime - lastFrameTime >= ANIMATION_INTERVAL_MS) {
+        lastFrameTime = currentTime;
+        const content = di.generateMoshedBase64();
+        document.body.style.backgroundImage = `url("data:image/jpeg;base64,${content}")`;
+      }
     };
 
     const loadImageAsset = async () => {
       const appleTreeImageUrl = assetUrl("/apple-tree/color.jpg");
       await di.fetchImage(appleTreeImageUrl);
+
+      di.setDatamoshRange(345, 375);
+
+      if (!isMounted) return;
+
+      requestID = requestAnimationFrame(animate);
     };
 
-    let interval: ReturnType<typeof setInterval>;
-
-    loadImageAsset().then(() => {
-      di.setDatamoshRange(345, 375);
-      interval = setInterval(datamoshBackground, ANIMATION_INTERVAL_MS);
-    });
+    loadImageAsset();
 
     return () => {
-      clearInterval(interval);
+      isMounted = false;
+      cancelAnimationFrame(requestID);
     };
   }, []);
 
