@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { NotFoundPageContent } from "@/features/not-found";
+import { assetUrl } from "@/utils/asset";
 import { DatamoshedImage } from "@/utils/datamosh";
 
 export default function NotFound() {
@@ -18,7 +19,7 @@ export default function NotFound() {
     };
 
     const loadImageAsset = async () => {
-      const appleTreeImageUrl = `${window.location.origin}/apple-tree/color.jpg`;
+      const appleTreeImageUrl = assetUrl("/apple-tree/color.jpg");
       await di.fetchImage(appleTreeImageUrl);
     };
 

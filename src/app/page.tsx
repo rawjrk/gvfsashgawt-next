@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { HomePageContent } from "@/features/home";
+import { assetUrl } from "@/utils/asset";
 import { DatamoshedImage } from "@/utils/datamosh";
 
 const ANIMATION_INTERVAL_MS = 90;
@@ -20,7 +21,7 @@ export default function Home() {
     };
 
     const loadImageAsset = async () => {
-      const appleTreeImageUrl = `${window.location.origin}/apple-tree/color.jpg`;
+      const appleTreeImageUrl = assetUrl("/apple-tree/color.jpg");
       await di.fetchImage(appleTreeImageUrl);
     };
 
