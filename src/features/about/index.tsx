@@ -6,6 +6,7 @@ import { EXT_LINKS } from "@/constants/navigation";
 import { asset } from "@/lib/asset";
 
 import { SmonksVideo } from "./components/video";
+import { APPLE_TREE } from "@/constants/backgrounds";
 
 const HUE_ROTATE = "animate-(--hue-rotation)";
 const HUE_CANCEL = "animate-(--hue-rotation-cancel)";
