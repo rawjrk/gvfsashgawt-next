@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { APPLE_TREE } from "@/constants/backgrounds";
 import { HomePageContent } from "@/features/home";
 import { assetUrl } from "@/lib/asset";
+import { fetchBlob } from "@/lib/blob";
 import { DatamoshedImage } from "@/lib/datamosh";
 
 const ANIMATION_INTERVAL_MS = 90;
@@ -22,7 +23,8 @@ export default function Home() {
 
     const loadImageAsset = async () => {
       const appleTreeImageUrl = assetUrl(APPLE_TREE.COLOR.url);
-      await di.fetchImage(appleTreeImageUrl);
+      const imgBlob = await fetchBlob(appleTreeImageUrl);
+      await di.loadFromBlob(imgBlob);
 
       di.setDatamoshRange(...APPLE_TREE.COLOR.range);
     };
