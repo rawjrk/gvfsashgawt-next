@@ -3,6 +3,16 @@ name: Deploy to Github Pages
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - "README.md"
+      - "doc/**"
+      - "LICENSE"
+      - ".vscode/**"
+      - ".husky/**"
+      - ".prettierrc"
+      - ".prettierignore"
+      - "commitlint.config.mjs"
+      - "lint-staged.config.mjs"
 
   workflow_dispatch:
 
