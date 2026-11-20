@@ -18,3 +18,9 @@ Webtool for LIVE glitch animations.
 ## `dd,np!` manual
 
 TBA
+
+## `/djpops`
+
+Interactive page(s) built by my friend [`@_broke_the_view_of_the_sun_`](https://www.instagram.com/_broke_the_view_of_the_sun_/) aka. [`вже`](https://t.me/vzhevdoma) aka. [`dj pops`](https://soundcloud.com/djpops00)
+
+- [`I DISSOLVE`](https://gvfsashgawt.zip/djpops/i-dissolve)
