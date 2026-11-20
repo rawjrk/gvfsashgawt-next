@@ -1,6 +1,7 @@
 import { GibLink, GibWord } from "@/components/gibberish";
 import { Body, Navbar, Paragraph } from "@/components/layout";
 import { CentralSection, PageContainer } from "@/components/layout";
+import { APPLE_TREE } from "@/constants/backgrounds";
 import { EXT_LINKS } from "@/constants/navigation";
 import { asset } from "@/lib/asset";
 
@@ -13,7 +14,7 @@ export function AboutPageContent() {
   return (
     <Body
       className={HUE_ROTATE}
-      style={{ backgroundImage: `url("${asset("/apple-tree/color2.jpg")}")` }}
+      style={{ backgroundImage: `url("${asset(APPLE_TREE.COLOR_2.url)}")` }}
     >
       <Navbar className={HUE_CANCEL} currentHref="/about" />
 

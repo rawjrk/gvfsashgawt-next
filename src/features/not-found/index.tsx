@@ -6,13 +6,12 @@ import {
   Navbar,
   PageContainer,
 } from "@/components/layout";
+import { APPLE_TREE } from "@/constants/backgrounds";
 import { asset } from "@/lib/asset";
 
 export function NotFoundPageContent() {
   return (
-    <Body
-      style={{ backgroundImage: `url("${asset("/apple-tree/mosh.jpg")}")` }}
-    >
+    <Body style={{ backgroundImage: `url("${asset(APPLE_TREE.MOSH.url)}")` }}>
       <Navbar currentHref={null} />
 
       <PageContainer>

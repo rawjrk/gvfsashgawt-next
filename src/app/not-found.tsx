@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+import { APPLE_TREE } from "@/constants/backgrounds";
 import { NotFoundPageContent } from "@/features/not-found";
 import { assetUrl } from "@/lib/asset";
 import { DatamoshedImage } from "@/lib/datamosh";
@@ -19,12 +20,12 @@ export default function NotFound() {
     };
 
     const loadImageAsset = async () => {
-      const appleTreeImageUrl = assetUrl("/apple-tree/color.jpg");
+      const appleTreeImageUrl = assetUrl(APPLE_TREE.COLOR.url);
       await di.fetchImage(appleTreeImageUrl);
     };
 
     loadImageAsset().then(() => {
-      di.setDatamoshRange(345, 375);
+      di.setDatamoshRange(...APPLE_TREE.COLOR.range);
       datamoshBackground();
     });
 
