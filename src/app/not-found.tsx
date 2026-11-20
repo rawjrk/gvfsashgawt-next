@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import { APPLE_TREE } from "@/constants/backgrounds";
 import { NotFoundPageContent } from "@/features/not-found";
 import { assetUrl } from "@/lib/asset";
+import { fetchBlob } from "@/lib/blob";
 import { DatamoshedImage } from "@/lib/datamosh";
 
 export default function NotFound() {
@@ -20,7 +21,8 @@ export default function NotFound() {
 
     const loadImageAsset = async () => {
       const appleTreeImageUrl = assetUrl(APPLE_TREE.COLOR.url);
-      await di.fetchImage(appleTreeImageUrl);
+      const imgBlob = await fetchBlob(appleTreeImageUrl);
+      await di.loadFromBlob(imgBlob);
     };
 
     loadImageAsset().then(() => {

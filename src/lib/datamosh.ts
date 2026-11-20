@@ -1,4 +1,3 @@
-import { fetchBlob } from "./blob";
 import { getImageMimeType } from "./mime";
 
 // `crypto.getRandomValues` accepts at most 65536 bytes per call.
@@ -27,11 +26,6 @@ export class DatamoshedImage {
   /** Range currently randomized inside `_working`. */
   private _dirtyBytes: [number, number] = [0, 0];
   private _objectUrl?: string;
-
-  async fetchImage(imageUrl: string) {
-    const imageBlob = await fetchBlob(imageUrl);
-    await this.loadFromBlob(imageBlob);
-  }
 
   async loadFromBlob(imageBlob: Blob) {
     const mimeType = getImageMimeType(imageBlob);
