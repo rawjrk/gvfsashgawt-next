@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+import { APPLE_TREE } from "@/constants/backgrounds";
 import { HomePageContent } from "@/features/home";
 import { assetUrl } from "@/lib/asset";
 import { DatamoshedImage } from "@/lib/datamosh";
@@ -21,8 +22,10 @@ export default function Home() {
     };
 
     const loadImageAsset = async () => {
-      const appleTreeImageUrl = assetUrl("/apple-tree/color.jpg");
+      const appleTreeImageUrl = assetUrl(APPLE_TREE.COLOR.url);
       await di.fetchImage(appleTreeImageUrl);
+
+      di.setDatamoshRange(...APPLE_TREE.COLOR.range);
     };
 
     let interval: ReturnType<typeof setInterval>;
