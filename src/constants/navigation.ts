@@ -7,11 +7,9 @@ export const NAV_LINKS = [
 ] as const satisfies NavLink[];
 
 export const INSTAGRAM_URL = "https://instagram.com/gvfsashgawt" as const;
-export const FLICKR_URL = "https://flic.kr/gvfsashgawt" as const;
 export const GITHUB_URL = "https://github.com/rawjrk/gvfsashgawt-next" as const;
 
 export const EXT_LINKS = [
   { href: INSTAGRAM_URL, title: "IN" },
-  { href: FLICKR_URL, title: "FL" },
   { href: GITHUB_URL, title: "GH" },
 ] as const satisfies NavLink[];
