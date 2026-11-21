@@ -17,6 +17,7 @@ const supportedImageTypes = (Object.values(ImageType) as string[])
   .concat("jpg")
   .map((ext) => `.${ext}`);
 
+/** @deprecated */
 export function MoshForm() {
   const moshCanvas = useMoshCanvas();
   const helpModal = useMoshHelpModal();

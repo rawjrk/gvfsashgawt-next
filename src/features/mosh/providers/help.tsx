@@ -19,6 +19,7 @@ const MoshHelpModalContext = createContext<MoshHelpModalContextType | null>(
   null,
 );
 
+/** @deprecated */
 export const MoshHelpModalProvider = ({ children }: PropsWithChildren) => {
   const [show, setShow] = useState(false);
 

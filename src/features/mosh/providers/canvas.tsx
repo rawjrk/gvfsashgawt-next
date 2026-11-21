@@ -8,6 +8,7 @@ import {
   useRef,
 } from "react";
 
+import { cn } from "@/lib/cn";
 import { ElementProps } from "@/types/elements";
 
 type MoshCanvasContextType = {
@@ -41,4 +42,22 @@ type MoshCanvasElementProps = ElementProps<"canvas"> & {
 export function MoshCanvasElement({ ...props }: MoshCanvasElementProps) {
   const moshCanvas = useMoshCanvas();
   return <canvas ref={moshCanvas.ref} {...props} />;
+}
+
+export function MoshCanvasContainer({
+  children,
+  className,
+  ...props
+}: ElementProps<"section">) {
+  return (
+    <section
+      className={cn(
+        "flex h-full w-full flex-1 items-center justify-center",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </section>
+  );
 }
