@@ -3,8 +3,8 @@ import { cn } from "@/lib/cn";
 import { ElementProps } from "@/types/elements";
 import { ExtractHref } from "@/types/navigation";
 
-import { FakeLink } from "../custom_link";
 import { GibLink } from "../gibberish";
+import { FakeLink } from "../link";
 
 const SEPARATOR_CHAR = "*";
 

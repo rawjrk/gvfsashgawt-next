@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
-import { Link } from "@/components/custom_link";
-import { BaseModalProps, ModalWrapper } from "@/components/modal_wrapper";
+import { Link } from "@/components/link";
+import { BaseModalProps, ModalWrapper } from "@/components/modal";
 import { Button } from "@/components/ui/button";
 import { INSTAGRAM_URL } from "@/constants/navigation";
 

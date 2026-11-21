@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 
 import { gibberishWord } from "@/lib/gibberish";
 
-import { Link, LinkProps } from "../custom_link";
+import { Link, LinkProps } from "../link";
 
 type Props = Omit<LinkProps, "children"> & {
   title: string;
