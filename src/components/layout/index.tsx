@@ -1,3 +1,5 @@
 export * from "./blocks";
 export * from "./body";
-export * from "./insides";
+export * from "./container";
+export * from "./header";
+export * from "./navbar";

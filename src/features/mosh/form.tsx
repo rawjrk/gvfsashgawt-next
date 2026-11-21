@@ -9,7 +9,7 @@ import { ImageType } from "@/constants/image_types";
 import { useAnimatedDatamosh } from "@/hooks/use_animated_datamosh";
 import { loadBase64ToCanvas } from "@/lib/file";
 
-import { MoshHelpModal, MoshNavBlock, MoshTipsBlock } from "./components";
+import { MoshHelpModal, MoshTipsBlock } from "./components";
 import { useMoshCanvas } from "./providers/canvas";
 import { useMoshHelpModal } from "./providers/help";
 
@@ -68,7 +68,6 @@ export function MoshForm() {
       />
 
       <MoshTipsBlock onPress={helpModal.open} />
-      <MoshNavBlock />
       <MoshHelpModal show={helpModal.show} onClose={helpModal.close} />
     </>
   );

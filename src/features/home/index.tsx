@@ -1,24 +1,28 @@
-import { GibLink } from "@/components/gibberish";
 import { GibText } from "@/components/gibberish";
 import {
-  CenteredBodyTemplate,
+  Body,
+  CentralSection,
   DefaultHeader,
-  MainContainer,
+  PageContainer,
 } from "@/components/layout";
+import { Navbar } from "@/components/layout/navbar";
 import { asset } from "@/lib/asset";
 
 export function HomePageContent() {
   return (
-    <CenteredBodyTemplate
+    <Body
       style={{ backgroundImage: `url("${asset("/apple-tree/mosh.jpg")}")` }}
     >
-      <DefaultHeader />
+      <Navbar currentHref="/" />
 
-      <MainContainer>
-        Oops! Sorry, but the page you have requested contains complete{" "}
-        <GibText /> <GibLink title="mosh" href="/mosh" /> <GibText />{" "}
-        <GibLink title="about" href="/about" /> <GibText />.
-      </MainContainer>
-    </CenteredBodyTemplate>
+      <PageContainer>
+        <DefaultHeader />
+
+        <CentralSection>
+          Oops! Sorry, but the page you have requested contains complete{" "}
+          <GibText /> <GibText />.
+        </CentralSection>
+      </PageContainer>
+    </Body>
   );
 }

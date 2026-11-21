@@ -1,7 +1,4 @@
-import { extLinks, getNavLinks, NavLinkHref } from "@/constants/navigation";
 import { ElementProps } from "@/types/elements";
-
-import { GibLink } from "../gibberish";
 
 export function Paragraph({
   children,
@@ -12,47 +9,5 @@ export function Paragraph({
     <p className={className} {...props}>
       {children}
     </p>
-  );
-}
-
-export function NavigationLinks({
-  excludeHref,
-}: {
-  excludeHref: NavLinkHref | null;
-}) {
-  return (
-    <>
-      {getNavLinks(excludeHref ?? undefined).map(({ href, title }, index) => (
-        <span key={title}>
-          {index > 0 ? " || " : " >> "}
-          <GibLink
-            key={title}
-            className="uppercase"
-            href={href}
-            title={title}
-          />
-        </span>
-      ))}
-    </>
-  );
-}
-
-export function ExternalLinks() {
-  return (
-    <Paragraph>
-      &lt;{" "}
-      {extLinks.map(({ href, title }, index) => (
-        <span key={title}>
-          {index > 0 ? " * " : ""}
-          <GibLink
-            key={title}
-            className="uppercase"
-            href={href}
-            title={title}
-          />
-        </span>
-      ))}{" "}
-      &gt;
-    </Paragraph>
   );
 }

@@ -9,35 +9,17 @@ const vt323 = VT323({
   subsets: ["latin"],
 });
 
-export function BaseBodyTemplate({
-  children,
-  className,
-  ...props
-}: ElementProps<"body">) {
+export function Body({ children, className, ...props }: ElementProps<"body">) {
   return (
     <body
-      className={cn(vt323.variable, "h-screen w-screen antialiased", className)}
-      {...props}
-    >
-      {children}
-    </body>
-  );
-}
-
-export function CenteredBodyTemplate({
-  children,
-  className,
-  ...props
-}: ElementProps<"body">) {
-  return (
-    <BaseBodyTemplate
       className={cn(
-        "bg-background text-foreground flex flex-col items-center justify-center gap-8",
+        vt323.variable,
+        "bg-background text-foreground flex h-screen w-screen flex-col antialiased",
         className,
       )}
       {...props}
     >
       {children}
-    </BaseBodyTemplate>
+    </body>
   );
 }
