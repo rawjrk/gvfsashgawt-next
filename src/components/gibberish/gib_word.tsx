@@ -12,7 +12,14 @@ type Props = Omit<ElementProps<"span">, "children"> & {
   override?: { at: number; char: string };
 };
 
-export function GibWord({ className, title, override, ...props }: Props) {
+export function GibWord({
+  className,
+  title,
+  override,
+  onMouseEnter,
+  onMouseLeave,
+  ...props
+}: Props) {
   const [content, setContent] = useState(title);
 
   const setGibberishContent = useCallback(() => {
@@ -34,10 +41,16 @@ export function GibWord({ className, title, override, ...props }: Props) {
 
   return (
     <span
-      className={cn("hover:text-primary", className)}
-      onMouseEnter={() => setGibberishContent()}
-      onMouseLeave={() => setContent(title)}
       {...props}
+      className={cn("hover:text-primary", className)}
+      onMouseEnter={(e) => {
+        setGibberishContent();
+        onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        setContent(title);
+        onMouseLeave?.(e);
+      }}
     >
       {content}
     </span>

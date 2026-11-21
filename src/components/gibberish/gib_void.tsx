@@ -9,23 +9,30 @@ type Props = Omit<ElementProps<"span">, "children"> & {
   title: string;
 };
 
-export function GibVoid({ title, ...props }: Props) {
+export function GibVoid({
+  title,
+  onMouseEnter,
+  onMouseLeave,
+  ...props
+}: Props) {
   const interval = useRef<NodeJS.Timeout>(null);
   const [content, setContent] = useState(title);
 
   return (
     <span
       {...props}
-      onMouseEnter={() => {
+      onMouseEnter={(e) => {
         interval.current = setInterval(() => {
           setContent(gibberishWord(title.length));
         }, 60);
+        onMouseEnter?.(e);
       }}
-      onMouseLeave={() => {
+      onMouseLeave={(e) => {
         if (interval.current) {
           clearInterval(interval.current);
         }
         setContent(title);
+        onMouseLeave?.(e);
       }}
     >
       {content}

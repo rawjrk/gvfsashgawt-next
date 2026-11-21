@@ -1,10 +1,17 @@
 import { cn } from "@/lib/cn";
 import { ElementProps } from "@/types/elements";
 
-export function PageContainer({ children, ...props }: ElementProps<"main">) {
+export function PageContainer({
+  children,
+  className,
+  ...props
+}: ElementProps<"main">) {
   return (
     <main
-      className="flex flex-1 flex-col items-center justify-center gap-y-6"
+      className={cn(
+        "flex flex-1 flex-col items-center justify-center gap-y-6",
+        className,
+      )}
       {...props}
     >
       {children}
