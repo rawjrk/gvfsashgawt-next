@@ -8,7 +8,7 @@ import {
   useRef,
 } from "react";
 
-import { CanvasProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
 type MoshCanvasContextType = {
   ref: RefObject<HTMLCanvasElement | null>;
@@ -34,7 +34,7 @@ export const useMoshCanvas = () => {
   return ctx;
 };
 
-type MoshCanvasElementProps = CanvasProps & {
+type MoshCanvasElementProps = ElementProps<"canvas"> & {
   className?: string;
 };
 

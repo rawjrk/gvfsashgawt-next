@@ -1,9 +1,13 @@
 import { extLinks, getNavLinks, NavLinkHref } from "@/constants/navigation";
-import { ParagraphProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
 import { GibLink } from "../gibberish";
 
-export function Paragraph({ children, className, ...props }: ParagraphProps) {
+export function Paragraph({
+  children,
+  className,
+  ...props
+}: ElementProps<"p">) {
   return (
     <p className={className} {...props}>
       {children}

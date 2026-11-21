@@ -1,7 +1,7 @@
 import { VT323 } from "next/font/google";
 
 import { cn } from "@/lib/cn";
-import { BodyProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
 const vt323 = VT323({
   variable: "--font-vt323",
@@ -9,7 +9,11 @@ const vt323 = VT323({
   subsets: ["latin"],
 });
 
-export function BaseBodyTemplate({ children, className, ...props }: BodyProps) {
+export function BaseBodyTemplate({
+  children,
+  className,
+  ...props
+}: ElementProps<"body">) {
   return (
     <body
       className={cn(vt323.variable, "h-screen w-screen antialiased", className)}
@@ -24,7 +28,7 @@ export function CenteredBodyTemplate({
   children,
   className,
   ...props
-}: BodyProps) {
+}: ElementProps<"body">) {
   return (
     <BaseBodyTemplate
       className={cn(

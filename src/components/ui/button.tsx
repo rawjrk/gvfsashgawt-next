@@ -1,7 +1,11 @@
 import { cn } from "@/lib/cn";
-import { ButtonProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
-export function Button({ children, className, ...props }: ButtonProps) {
+export function Button({
+  children,
+  className,
+  ...props
+}: ElementProps<"button">) {
   return (
     <button
       className={cn(

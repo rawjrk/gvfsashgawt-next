@@ -3,9 +3,9 @@
 import { useRef, useState } from "react";
 
 import { gibberishWord } from "@/lib/gibberish";
-import { SpanProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
-type Props = Omit<SpanProps, "children"> & {
+type Props = Omit<ElementProps<"span">, "children"> & {
   title: string;
 };
 

@@ -1,6 +1,6 @@
 import { NavLinkHref } from "@/constants/navigation";
 import { cn } from "@/lib/cn";
-import { H1Props, MainProps, NavProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
 import { GibWord } from "../gibberish";
 import { NavigationLinks } from "./blocks";
@@ -8,7 +8,7 @@ import { NavigationLinks } from "./blocks";
 export function DefaultHeader({
   className,
   ...props
-}: Omit<H1Props, "children">) {
+}: Omit<ElementProps<"h1">, "children">) {
   return (
     <h1
       className={cn(
@@ -27,7 +27,11 @@ export function DefaultHeader({
   );
 }
 
-export function MainContainer({ children, className, ...props }: MainProps) {
+export function MainContainer({
+  children,
+  className,
+  ...props
+}: ElementProps<"main">) {
   return (
     <main
       className={cn(
@@ -45,7 +49,9 @@ export function NavigationBar({
   className,
   currentHref,
   ...props
-}: Omit<NavProps, "children"> & { currentHref: NavLinkHref | null }) {
+}: Omit<ElementProps<"nav">, "children"> & {
+  currentHref: NavLinkHref | null;
+}) {
   return (
     <nav
       className={cn(

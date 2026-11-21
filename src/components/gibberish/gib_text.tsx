@@ -1,7 +1,7 @@
 import { gibberishSentence } from "@/lib/gibberish";
-import { SpanProps } from "@/types/elements";
+import { ElementProps } from "@/types/elements";
 
-export function GibText({ ...props }: Omit<SpanProps, "children">) {
+export function GibText({ ...props }: Omit<ElementProps<"span">, "children">) {
   return (
     <span suppressHydrationWarning={true} {...props}>
       {gibberishSentence()}
