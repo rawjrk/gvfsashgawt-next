@@ -1,3 +1,5 @@
+import { cva } from "class-variance-authority";
+
 import { cn } from "@/lib/cn";
 import { ElementProps } from "@/types/elements";
 
@@ -28,17 +30,23 @@ export function OverlayContainer({
   );
 }
 
-const positionClasses: Record<OverlayPosition, string> = {
-  "top-left": "top-(--overlay-inset) left-(--overlay-inset)",
-  "top-center": "top-(--overlay-inset) left-1/2 -translate-x-1/2",
-  "top-right": "top-(--overlay-inset) right-(--overlay-inset)",
-  "center-left": "top-1/2 left-(--overlay-inset) -translate-y-1/2",
-  "center-center": "top-1/2 left-1/2 -translate-1/2",
-  "center-right": "top-1/2 right-(--overlay-inset) -translate-y-1/2",
-  "bottom-left": "bottom-(--overlay-inset) left-(--overlay-inset)",
-  "bottom-center": "bottom-(--overlay-inset) left-1/2 -translate-x-1/2",
-  "bottom-right": "bottom-(--overlay-inset) right-(--overlay-inset)",
-};
+const overlayPanelVariants = cva(
+  "pointer-events-auto absolute max-h-[calc(100%-2*var(--overlay-inset))] max-w-[calc(100%-2*var(--overlay-inset))]",
+  {
+    variants: {
+      vertical: {
+        top: "top-(--overlay-inset)",
+        center: "top-1/2 -translate-y-1/2",
+        bottom: "bottom-(--overlay-inset)",
+      } satisfies Record<VerticalPosition, string>,
+      horizontal: {
+        left: "left-(--overlay-inset)",
+        center: "left-1/2 -translate-x-1/2",
+        right: "right-(--overlay-inset)",
+      } satisfies Record<HorizontalPosition, string>,
+    },
+  },
+);
 
 type OverlayPanelProps = ElementProps<"div"> & {
   position: OverlayPosition;
@@ -54,14 +62,15 @@ export function OverlayPanel({
   className,
   ...props
 }: OverlayPanelProps) {
+  const [vertical, horizontal] = position.split("-") as [
+    VerticalPosition,
+    HorizontalPosition,
+  ];
+
   return (
     <div
       data-position={position}
-      className={cn(
-        "pointer-events-auto absolute max-h-[calc(100%-2*var(--overlay-inset))] max-w-[calc(100%-2*var(--overlay-inset))]",
-        positionClasses[position],
-        className,
-      )}
+      className={cn(overlayPanelVariants({ vertical, horizontal }), className)}
       {...props}
     >
       {children}
