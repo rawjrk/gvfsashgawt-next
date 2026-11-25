@@ -1,7 +1,8 @@
 import { cva } from "class-variance-authority";
+import { ElementType } from "react";
 
 import { cn } from "@/lib/cn";
-import { ElementProps } from "@/types/elements";
+import { ElementTag, PolymorphicProps } from "@/types/elements";
 
 type VerticalPosition = "top" | "center" | "bottom";
 type HorizontalPosition = "left" | "center" | "right";
@@ -12,13 +13,16 @@ export type OverlayPosition = `${VerticalPosition}-${HorizontalPosition}`;
  * Full-size layer stacked over its (relative) parent.
  * Holds each `Overlay.Panel`.
  */
-export function OverlayContainer({
+export function OverlayContainer<T extends ElementTag = "div">({
+  as,
   children,
   className,
   ...props
-}: ElementProps<"div">) {
+}: PolymorphicProps<T>) {
+  const Tag = (as ?? "div") as ElementType;
+
   return (
-    <div
+    <Tag
       className={cn(
         "pointer-events-none absolute inset-0 overflow-hidden [--overlay-inset:--spacing(4)]",
         className,
@@ -26,7 +30,7 @@ export function OverlayContainer({
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
@@ -48,7 +52,7 @@ const overlayPanelVariants = cva(
   },
 );
 
-type OverlayPanelProps = ElementProps<"div"> & {
+type OverlayPanelOwnProps = {
   position: OverlayPosition;
 };
 
@@ -56,25 +60,28 @@ type OverlayPanelProps = ElementProps<"div"> & {
  * A menu container pinned to one of 9 anchor points of the overlay.
  * Must be rendered inside `Overlay.Container`.
  */
-export function OverlayPanel({
+export function OverlayPanel<E extends ElementTag>({
+  as,
   position,
   children,
   className,
   ...props
-}: OverlayPanelProps) {
+}: PolymorphicProps<E, OverlayPanelOwnProps>) {
+  const Tag = (as ?? "div") as ElementType;
+
   const [vertical, horizontal] = position.split("-") as [
     VerticalPosition,
     HorizontalPosition,
   ];
 
   return (
-    <div
+    <Tag
       data-position={position}
       className={cn(overlayPanelVariants({ vertical, horizontal }), className)}
       {...props}
     >
       {children}
-    </div>
+    </Tag>
   );
 }
 
