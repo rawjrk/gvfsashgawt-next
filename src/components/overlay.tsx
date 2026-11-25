@@ -4,8 +4,8 @@ import { ElementType } from "react";
 import { cn } from "@/lib/cn";
 import { ElementTag, PolymorphicProps } from "@/types/elements";
 
-type VerticalPosition = "top" | "center" | "bottom";
-type HorizontalPosition = "left" | "center" | "right";
+type VerticalPosition = "top" | "center" | "bottom" | "stretch";
+type HorizontalPosition = "left" | "center" | "right" | "stretch";
 
 export type OverlayPosition = `${VerticalPosition}-${HorizontalPosition}`;
 
@@ -42,11 +42,13 @@ const overlayPanelVariants = cva(
         top: "top-(--overlay-inset)",
         center: "top-1/2 -translate-y-1/2",
         bottom: "bottom-(--overlay-inset)",
+        stretch: "inset-y-(--overlay-inset)",
       } satisfies Record<VerticalPosition, string>,
       horizontal: {
         left: "left-(--overlay-inset)",
         center: "left-1/2 -translate-x-1/2",
         right: "right-(--overlay-inset)",
+        stretch: "inset-x-(--overlay-inset)",
       } satisfies Record<HorizontalPosition, string>,
     },
   },
@@ -57,7 +59,8 @@ type OverlayPanelOwnProps = {
 };
 
 /**
- * A menu container pinned to one of 9 anchor points of the overlay.
+ * A menu container pinned to an anchor point of the overlay,
+ * or stretched along an edge.
  * Must be rendered inside `Overlay.Container`.
  */
 export function OverlayPanel<E extends ElementTag>({
