@@ -11,7 +11,7 @@ export default function MoshPageContent() {
   return (
     <Body>
       <Navbar currentHref="/mosh" />
-      <PageContainer className="bg-foreground">
+      <PageContainer className="bg-foreground min-h-0">
         <MoshCanvasProvider>
           <MoshCanvasContainer className="relative flex-1">
             <MoshCanvasElement className="max-h-full max-w-full" />

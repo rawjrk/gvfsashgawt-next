@@ -52,7 +52,7 @@ export function MoshCanvasContainer({
   return (
     <section
       className={cn(
-        "flex h-full w-full flex-1 items-center justify-center",
+        "flex h-full min-h-0 w-full min-w-0 flex-1 items-center justify-center overflow-hidden",
         className,
       )}
       {...props}
