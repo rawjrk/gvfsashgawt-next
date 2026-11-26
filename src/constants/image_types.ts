@@ -9,4 +9,8 @@ export enum ImageType {
   webp = "webp",
 }
 
+export const SUPPORTED_IMAGE_TYPES = (Object.values(ImageType) as string[])
+  .concat("jpg")
+  .map((ext) => `.${ext}`);
+
 export type ImageMimeType = `image/${ImageType}`;
